@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import { Footer } from "@/components/layout/footer"
 
 export const metadata: Metadata = {
   title: "WorkNest | Multi-tenant Task Management",
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
-      <main className="flex w-full max-w-4xl flex-col items-center justify-center px-8 py-16 text-center page-enter">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+      <main className="flex flex-1 w-full max-w-4xl mx-auto flex-col items-center justify-center px-8 py-16 text-center page-enter">
         <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg">
           <svg
             className="h-10 w-10 text-primary-foreground"
@@ -113,6 +114,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   )
 }
