@@ -28,18 +28,22 @@ export default async function DashboardPage({
 
   return (
     <Suspense fallback={<DashboardLoading />}>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-semibold text-foreground">Dashboard</h1>
-          <p className="text-sm text-muted-foreground">
-            Overview of your workspace activity and metrics
+      <div className="space-y-8">
+        {/* Header Section */}
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">Dashboard</h1>
+          <p className="text-base text-muted-foreground">
+            Monitor your workspace activity, track progress, and manage your team
           </p>
         </div>
 
+        {/* Insights Section */}
         <DashboardInsights insights={insights} />
 
+        {/* Stats Cards */}
         <StatsCards metrics={dashboardData.metrics} />
 
+        {/* Content Grid */}
         <div className="grid gap-6 lg:grid-cols-2">
           <RecentTasks tasks={dashboardData.recentTasks} workspaceId={workspaceId} />
           <ActivityFeed activities={dashboardData.recentActivity} />

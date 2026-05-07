@@ -91,46 +91,56 @@ export function CreateTaskDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[550px]">
         <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>Create Task</DialogTitle>
-            <DialogDescription>Add a new task to your workspace</DialogDescription>
+          <DialogHeader className="space-y-3">
+            <DialogTitle className="text-2xl font-bold">Create Task</DialogTitle>
+            <DialogDescription className="text-base">
+              Add a new task to your workspace and assign it to team members
+            </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-4 py-4">
-            <div className="space-y-2">
-              <Label htmlFor="title">Title *</Label>
+          <div className="space-y-5 py-6">
+            <div className="space-y-2.5">
+              <Label htmlFor="title" className="text-sm font-semibold">
+                Title <span className="text-destructive">*</span>
+              </Label>
               <Input
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="Enter task title"
+                placeholder="Enter a clear, descriptive title"
                 required
+                className="h-11"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="description">Description</Label>
+            <div className="space-y-2.5">
+              <Label htmlFor="description" className="text-sm font-semibold">
+                Description
+              </Label>
               <textarea
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Enter task description"
-                className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                placeholder="Add details, context, or requirements"
+                rows={4}
+                className="flex w-full rounded-lg border border-input bg-background px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="status">Status</Label>
+              <div className="space-y-2.5">
+                <Label htmlFor="status" className="text-sm font-semibold">
+                  Status
+                </Label>
                 <Select
                   value={formData.status}
                   onValueChange={(value) =>
                     setFormData({ ...formData, status: value as TaskStatus })
                   }
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="h-11">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -142,15 +152,17 @@ export function CreateTaskDialog({
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="priority">Priority</Label>
+              <div className="space-y-2.5">
+                <Label htmlFor="priority" className="text-sm font-semibold">
+                  Priority
+                </Label>
                 <Select
                   value={formData.priority}
                   onValueChange={(value) =>
                     setFormData({ ...formData, priority: value as TaskPriority })
                   }
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="h-11">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -164,13 +176,15 @@ export function CreateTaskDialog({
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="assignee">Assignee</Label>
+              <div className="space-y-2.5">
+                <Label htmlFor="assignee" className="text-sm font-semibold">
+                  Assignee
+                </Label>
                 <Select
                   value={formData.assigneeId}
                   onValueChange={(value) => setFormData({ ...formData, assigneeId: value })}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="h-11">
                     <SelectValue placeholder="Select assignee" />
                   </SelectTrigger>
                   <SelectContent>
@@ -184,23 +198,31 @@ export function CreateTaskDialog({
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="dueDate">Due Date</Label>
+              <div className="space-y-2.5">
+                <Label htmlFor="dueDate" className="text-sm font-semibold">
+                  Due Date
+                </Label>
                 <Input
                   id="dueDate"
                   type="date"
                   value={formData.dueDate}
                   onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
+                  className="h-11"
                 />
               </div>
             </div>
           </div>
 
-          <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+              className="h-11 font-semibold"
+            >
               Cancel
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} className="h-11 font-semibold min-w-[120px]">
               {loading ? "Creating..." : "Create Task"}
             </Button>
           </DialogFooter>

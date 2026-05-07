@@ -74,27 +74,27 @@ export function MemberTable({ workspaceId, members }: MemberTableProps) {
 
   if (members.length === 0) {
     return (
-      <div className="flex h-[400px] items-center justify-center rounded-lg border border-dashed border-border bg-muted/20">
-        <div className="text-center space-y-4">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+      <div className="flex h-[450px] items-center justify-center rounded-xl border-2 border-dashed border-border bg-gradient-to-br from-muted/30 to-muted/10">
+        <div className="text-center space-y-6 max-w-md px-6">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 ring-4 ring-primary/10 shadow-lg">
             <svg
-              className="h-8 w-8 text-primary"
+              className="h-10 w-10 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              strokeWidth={2}
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
               />
             </svg>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">No members found</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Invite your first team member to start collaborating
+          <div className="space-y-3">
+            <h3 className="text-xl font-bold text-foreground">No members found</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Invite your first team member to start collaborating on tasks and projects
             </p>
           </div>
         </div>
@@ -104,44 +104,52 @@ export function MemberTable({ workspaceId, members }: MemberTableProps) {
 
   return (
     <>
-      <div className="rounded-lg border border-border bg-card">
+      <div className="rounded-xl border-2 border-border bg-card shadow-sm overflow-hidden">
         <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[35%]">Member</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Joined</TableHead>
+          <TableHeader className="bg-muted/50">
+            <TableRow className="hover:bg-muted/50">
+              <TableHead className="w-[35%] font-semibold">Member</TableHead>
+              <TableHead className="font-semibold">Email</TableHead>
+              <TableHead className="font-semibold">Role</TableHead>
+              <TableHead className="font-semibold">Joined</TableHead>
               <TableHead className="w-[50px]"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {members.map((member) => (
-              <TableRow key={member.id} className="hover:bg-muted/50 transition-colors">
-                <TableCell>
+              <TableRow
+                key={member.id}
+                className="group hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0"
+              >
+                <TableCell className="py-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-sm font-bold text-primary-foreground ring-2 ring-primary/20 shadow-sm">
                       {(member.user.name || member.user.email).charAt(0).toUpperCase()}
                     </div>
                     <div>
-                      <div className="font-medium text-foreground">
+                      <div className="font-semibold text-foreground">
                         {member.user.name || "Unnamed User"}
                       </div>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>
-                  <span className="text-sm text-muted-foreground">{member.user.email}</span>
+                <TableCell className="py-4">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {member.user.email}
+                  </span>
                 </TableCell>
-                <TableCell>
+                <TableCell className="py-4">
                   <Select
                     value={member.role}
                     onValueChange={(value) => handleRoleChange(member.id, value)}
                     disabled={updatingRole === member.id}
                   >
-                    <SelectTrigger className="w-[130px]">
+                    <SelectTrigger className="w-[140px] h-9">
                       <SelectValue>
-                        <Badge variant="outline" className={roleConfig[member.role].className}>
+                        <Badge
+                          variant="outline"
+                          className={`${roleConfig[member.role].className} font-semibold border`}
+                        >
                           {roleConfig[member.role].label}
                         </Badge>
                       </SelectValue>
@@ -154,21 +162,25 @@ export function MemberTable({ workspaceId, members }: MemberTableProps) {
                     </SelectContent>
                   </Select>
                 </TableCell>
-                <TableCell>
-                  <span className="text-sm text-muted-foreground">
+                <TableCell className="py-4">
+                  <span className="text-sm font-medium text-muted-foreground">
                     {format(new Date(member.createdAt), "MMM d, yyyy")}
                   </span>
                 </TableCell>
-                <TableCell>
+                <TableCell className="py-4">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
+                    <DropdownMenuContent align="end" className="w-40">
                       <DropdownMenuItem
-                        className="text-destructive focus:text-destructive"
+                        className="text-destructive focus:text-destructive cursor-pointer"
                         onClick={() => setRemoveMember(member)}
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
