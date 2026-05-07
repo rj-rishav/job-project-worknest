@@ -66,18 +66,18 @@ export function StatsCards({ metrics }: StatsCardsProps) {
   ]
 
   return (
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 stagger-children">
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className={`group relative overflow-hidden border-2 ${stat.borderColor} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1`}
+          className={`group relative overflow-hidden border-2 ${stat.borderColor} transition-all duration-200 ease-out hover:shadow-lg hover:scale-[1.01] hover:-translate-y-1`}
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
             <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
               {stat.title}
             </CardTitle>
             <div
-              className={`rounded-xl p-2.5 ${stat.bgColor} transition-transform duration-300 group-hover:scale-110`}
+              className={`rounded-xl p-2.5 ${stat.bgColor} transition-transform duration-200 ease-out group-hover:scale-110`}
             >
               <stat.icon className={`h-5 w-5 ${stat.color}`} />
             </div>

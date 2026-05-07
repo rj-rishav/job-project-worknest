@@ -36,10 +36,10 @@ export function Sidebar({ workspaceId }: SidebarProps) {
               key={item.name}
               href={href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 ease-out",
                 isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-0.5"
               )}
             >
               <item.icon className="h-5 w-5" />

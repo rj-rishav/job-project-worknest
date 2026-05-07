@@ -54,15 +54,17 @@ export default async function ActivityPage({
 
   return (
     <Suspense fallback={<ActivityLoading />}>
-      <ActivityClient
-        workspaceId={workspaceId}
-        initialLogs={logsResult.data.logs}
-        initialTotal={logsResult.data.total}
-        initialHasMore={logsResult.data.hasMore}
-        users={usersResult.data}
-        initialFilters={filters}
-        initialPage={page}
-      />
+      <div className="page-enter">
+        <ActivityClient
+          workspaceId={workspaceId}
+          initialLogs={logsResult.data.logs}
+          initialTotal={logsResult.data.total}
+          initialHasMore={logsResult.data.hasMore}
+          users={usersResult.data}
+          initialFilters={filters}
+          initialPage={page}
+        />
+      </div>
     </Suspense>
   )
 }

@@ -38,11 +38,13 @@ export default async function SettingsPage({
 
   return (
     <Suspense fallback={<SettingsLoading />}>
-      <SettingsClient
-        workspaceId={workspaceId}
-        workspace={settingsResult.data}
-        userRole={userRole}
-      />
+      <div className="page-enter">
+        <SettingsClient
+          workspaceId={workspaceId}
+          workspace={settingsResult.data}
+          userRole={userRole}
+        />
+      </div>
     </Suspense>
   )
 }

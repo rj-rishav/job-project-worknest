@@ -37,12 +37,14 @@ export default async function TeamPage({
 
   return (
     <Suspense fallback={<TeamLoading />}>
-      <TeamClient
-        workspaceId={workspaceId}
-        initialMembers={membersResult.data}
-        initialSearch={searchQuery}
-        initialRoleFilter={roleFilter}
-      />
+      <div className="page-enter">
+        <TeamClient
+          workspaceId={workspaceId}
+          initialMembers={membersResult.data}
+          initialSearch={searchQuery}
+          initialRoleFilter={roleFilter}
+        />
+      </div>
     </Suspense>
   )
 }

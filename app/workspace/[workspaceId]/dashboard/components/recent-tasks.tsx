@@ -52,10 +52,15 @@ export function RecentTasks({ tasks, workspaceId }: RecentTasksProps) {
   }
 
   return (
-    <Card className="border-2 hover:shadow-md transition-shadow duration-300">
+    <Card className="border-2 transition-all duration-200 ease-out hover:shadow-md">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <CardTitle className="text-lg font-semibold">Recent Tasks</CardTitle>
-        <Button asChild variant="ghost" size="sm" className="gap-1 hover:gap-2 transition-all">
+        <Button
+          asChild
+          variant="ghost"
+          size="sm"
+          className="gap-1 transition-all duration-150 ease-out hover:gap-2"
+        >
           <Link href={`/workspace/${workspaceId}/tasks`}>
             View all
             <ArrowRight className="h-4 w-4" />
@@ -68,10 +73,10 @@ export function RecentTasks({ tasks, workspaceId }: RecentTasksProps) {
             <Link
               key={task.id}
               href={`/workspace/${workspaceId}/tasks`}
-              className="group flex items-start justify-between gap-4 border-b border-border/50 pb-4 last:border-0 last:pb-0 hover:bg-muted/50 -mx-3 px-3 py-3 rounded-lg transition-all duration-200"
+              className="group flex items-start justify-between gap-4 border-b border-border/50 pb-4 last:border-0 last:pb-0 hover:bg-muted/50 -mx-3 px-3 py-3 rounded-lg transition-all duration-150 ease-out"
             >
               <div className="flex-1 space-y-2 min-w-0">
-                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-150 ease-out line-clamp-1">
                   {task.title}
                 </p>
                 <div className="flex items-center gap-2 flex-wrap">

@@ -28,7 +28,7 @@ export default async function DashboardPage({
 
   return (
     <Suspense fallback={<DashboardLoading />}>
-      <div className="space-y-8">
+      <div className="space-y-8 page-enter">
         {/* Header Section */}
         <div className="space-y-2">
           <h1 className="text-4xl font-bold tracking-tight text-foreground">Dashboard</h1>

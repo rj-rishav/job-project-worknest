@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
-      <main className="flex w-full max-w-4xl flex-col items-center justify-center px-8 py-16 text-center">
-        <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary">
+      <main className="flex w-full max-w-4xl flex-col items-center justify-center px-8 py-16 text-center page-enter">
+        <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary transition-all duration-200 ease-out hover:scale-105 hover:shadow-lg">
           <svg
             className="h-10 w-10 text-primary-foreground"
             fill="none"
@@ -35,21 +35,21 @@ export default function Home() {
         <div className="flex flex-col gap-4 sm:flex-row">
           <Link
             href="/auth/signin"
-            className="flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground transition-all duration-150 ease-out hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98]"
           >
             Sign In
           </Link>
           <Link
             href="/dashboard"
-            className="flex h-12 items-center justify-center rounded-lg border border-input bg-background px-8 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="flex h-12 items-center justify-center rounded-lg border border-input bg-background px-8 text-sm font-medium transition-all duration-150 ease-out hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]"
           >
             Go to Dashboard
           </Link>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-3">
-          <div className="space-y-2">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+        <div className="mt-16 grid gap-8 sm:grid-cols-3 stagger-children">
+          <div className="space-y-2 transition-all duration-200 ease-out hover:-translate-y-1">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-all duration-200 ease-out hover:bg-primary/20 hover:scale-110">
               <svg
                 className="h-6 w-6 text-primary"
                 fill="none"
@@ -70,8 +70,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-2">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+          <div className="space-y-2 transition-all duration-200 ease-out hover:-translate-y-1">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-all duration-200 ease-out hover:bg-primary/20 hover:scale-110">
               <svg
                 className="h-6 w-6 text-primary"
                 fill="none"
@@ -92,8 +92,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-2">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+          <div className="space-y-2 transition-all duration-200 ease-out hover:-translate-y-1">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-all duration-200 ease-out hover:bg-primary/20 hover:scale-110">
               <svg
                 className="h-6 w-6 text-primary"
                 fill="none"

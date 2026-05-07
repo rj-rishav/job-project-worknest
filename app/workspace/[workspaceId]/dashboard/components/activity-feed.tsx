@@ -66,7 +66,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
   }
 
   return (
-    <Card className="border-2 hover:shadow-md transition-shadow duration-300">
+    <Card className="border-2 transition-all duration-200 ease-out hover:shadow-md">
       <CardHeader>
         <CardTitle className="text-lg font-semibold flex items-center gap-2">
           <Activity className="h-5 w-5 text-primary" />
@@ -81,7 +81,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
             return (
               <div
                 key={activity.id}
-                className="group flex items-start gap-3 border-b border-border/50 pb-4 last:border-0 last:pb-0 hover:bg-muted/50 -mx-3 px-3 py-3 rounded-lg transition-all duration-200"
+                className="group flex items-start gap-3 border-b border-border/50 pb-4 last:border-0 last:pb-0 hover:bg-muted/50 -mx-3 px-3 py-3 rounded-lg transition-all duration-150 ease-out"
               >
                 <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-sm font-semibold text-primary-foreground ring-2 ring-primary/20 shadow-sm">
                   {(activity.user.name || activity.user.email).charAt(0).toUpperCase()}
