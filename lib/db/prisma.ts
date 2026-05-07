@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { Pool } from "pg"
 
+let prismaInstance: PrismaClient | null = null
+
 const prismaClientSingleton = () => {
   const connectionString = process.env.DATABASE_URL
 
@@ -19,11 +21,20 @@ const prismaClientSingleton = () => {
 }
 
 declare const globalThis: {
-  prismaGlobal: ReturnType<typeof prismaClientSingleton>
+  prismaGlobal: PrismaClient | undefined
 } & typeof global
 
-const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+// Lazy initialization - only create client when first accessed
+const prisma = new Proxy({} as PrismaClient, {
+  get(target, prop) {
+    if (!prismaInstance) {
+      prismaInstance = globalThis.prismaGlobal ?? prismaClientSingleton()
+      if (process.env.NODE_ENV !== "production") {
+        globalThis.prismaGlobal = prismaInstance
+      }
+    }
+    return (prismaInstance as any)[prop]
+  },
+})
 
 export default prisma
-
-if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma
