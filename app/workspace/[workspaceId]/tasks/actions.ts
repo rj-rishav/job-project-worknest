@@ -178,12 +178,18 @@ export async function updateTask(
       },
     })
 
-    // Create activity log
+    // Create activity log with serialized changes
+    const serializedChanges = {
+      ...validated,
+      dueDate:
+        validated.dueDate instanceof Date ? validated.dueDate.toISOString() : validated.dueDate,
+    }
+
     await createActivityLog({
       action: "UPDATED",
       entityType: EntityType.TASK,
       entityId: task.id,
-      metadata: { title: task.title, changes: validated },
+      metadata: { title: task.title, changes: serializedChanges },
       workspaceId,
       userId,
     })
