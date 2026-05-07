@@ -30,9 +30,9 @@ export default async function DashboardPage({
     <Suspense fallback={<DashboardLoading />}>
       <div className="space-y-8 page-enter">
         {/* Header Section */}
-        <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground">Dashboard</h1>
-          <p className="text-base text-muted-foreground">
+        <div className="space-y-3">
+          <h1 className="text-5xl font-bold tracking-tight text-foreground">Dashboard</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl">
             Monitor your workspace activity, track progress, and manage your team
           </p>
         </div>

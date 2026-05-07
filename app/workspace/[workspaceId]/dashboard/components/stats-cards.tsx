@@ -20,9 +20,11 @@ export function StatsCards({ metrics }: StatsCardsProps) {
       icon: ListTodo,
       description: `${metrics.completionRate}% completion rate`,
       trend: metrics.completionRate >= 70 ? "positive" : "neutral",
-      color: "text-blue-600 dark:text-blue-400",
-      bgColor: "bg-blue-50 dark:bg-blue-950/30",
-      borderColor: "border-blue-100 dark:border-blue-900/50",
+      iconColor: "text-indigo-600 dark:text-indigo-400",
+      iconBg: "bg-indigo-50 dark:bg-indigo-950/30",
+      borderColor: "border-indigo-200/60 dark:border-indigo-800/40",
+      gradient:
+        "linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0.02) 100%)",
     },
     {
       title: "Completed",
@@ -30,9 +32,11 @@ export function StatsCards({ metrics }: StatsCardsProps) {
       icon: CheckCircle2,
       description: "Tasks finished",
       trend: "positive",
-      color: "text-green-600 dark:text-green-400",
-      bgColor: "bg-green-50 dark:bg-green-950/30",
-      borderColor: "border-green-100 dark:border-green-900/50",
+      iconColor: "text-emerald-600 dark:text-emerald-400",
+      iconBg: "bg-emerald-50 dark:bg-emerald-950/30",
+      borderColor: "border-emerald-200/60 dark:border-emerald-800/40",
+      gradient:
+        "linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%)",
     },
     {
       title: "Active Members",
@@ -40,9 +44,11 @@ export function StatsCards({ metrics }: StatsCardsProps) {
       icon: Users,
       description: "Team members",
       trend: "neutral",
-      color: "text-purple-600 dark:text-purple-400",
-      bgColor: "bg-purple-50 dark:bg-purple-950/30",
-      borderColor: "border-purple-100 dark:border-purple-900/50",
+      iconColor: "text-violet-600 dark:text-violet-400",
+      iconBg: "bg-violet-50 dark:bg-violet-950/30",
+      borderColor: "border-violet-200/60 dark:border-violet-800/40",
+      gradient:
+        "linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.02) 100%)",
     },
     {
       title: "Overdue",
@@ -50,49 +56,54 @@ export function StatsCards({ metrics }: StatsCardsProps) {
       icon: AlertCircle,
       description: metrics.overdueTasks > 0 ? "Need attention" : "All on track",
       trend: metrics.overdueTasks > 0 ? "negative" : "positive",
-      color:
+      iconColor:
         metrics.overdueTasks > 0
-          ? "text-red-600 dark:text-red-400"
-          : "text-gray-600 dark:text-gray-400",
-      bgColor:
+          ? "text-rose-600 dark:text-rose-400"
+          : "text-slate-600 dark:text-slate-400",
+      iconBg:
         metrics.overdueTasks > 0
-          ? "bg-red-50 dark:bg-red-950/30"
-          : "bg-gray-50 dark:bg-gray-950/30",
+          ? "bg-rose-50 dark:bg-rose-950/30"
+          : "bg-slate-50 dark:bg-slate-950/30",
       borderColor:
         metrics.overdueTasks > 0
-          ? "border-red-100 dark:border-red-900/50"
-          : "border-gray-100 dark:border-gray-900/50",
+          ? "border-rose-200/60 dark:border-rose-800/40"
+          : "border-slate-200/60 dark:border-slate-800/40",
+      gradient:
+        metrics.overdueTasks > 0
+          ? "linear-gradient(135deg, rgba(244, 63, 94, 0.08) 0%, rgba(244, 63, 94, 0.02) 100%)"
+          : "linear-gradient(135deg, rgba(148, 163, 184, 0.08) 0%, rgba(148, 163, 184, 0.02) 100%)",
     },
   ]
 
   return (
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 stagger-children">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 stagger-children">
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className={`group relative overflow-hidden border-2 ${stat.borderColor} transition-all duration-200 ease-out hover:shadow-lg hover:scale-[1.01] hover:-translate-y-1`}
+          className={`group relative overflow-hidden border-2 ${stat.borderColor} transition-all duration-200 ease-out hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1`}
+          style={{ background: stat.gradient }}
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-            <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+            <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               {stat.title}
             </CardTitle>
             <div
-              className={`rounded-xl p-2.5 ${stat.bgColor} transition-transform duration-200 ease-out group-hover:scale-110`}
+              className={`rounded-xl p-2.5 ${stat.iconBg} ring-1 ring-black/5 transition-all duration-200 ease-out group-hover:scale-110 group-hover:shadow-md dark:ring-white/10`}
             >
-              <stat.icon className={`h-5 w-5 ${stat.color}`} />
+              <stat.icon className={`h-5 w-5 ${stat.iconColor}`} />
             </div>
           </CardHeader>
-          <CardContent className="space-y-1">
+          <CardContent className="space-y-2">
             <div className="flex items-baseline gap-2">
-              <div className="text-3xl font-bold text-foreground tracking-tight">{stat.value}</div>
+              <div className="text-4xl font-bold tabular-nums tracking-tight text-foreground">
+                {stat.value}
+              </div>
               {stat.trend === "positive" && (
-                <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <TrendingUp className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
               )}
             </div>
             <p className="text-xs font-medium text-muted-foreground">{stat.description}</p>
           </CardContent>
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/[0.02] dark:to-white/[0.02] pointer-events-none" />
         </Card>
       ))}
     </div>

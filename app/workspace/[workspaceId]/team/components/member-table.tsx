@@ -147,8 +147,8 @@ export function MemberTable({ workspaceId, members }: MemberTableProps) {
                     <SelectTrigger className="w-[140px] h-9">
                       <SelectValue>
                         <Badge
-                          variant="outline"
-                          className={`${roleConfig[member.role].className} font-semibold border`}
+                          variant="secondary"
+                          // className={`${roleConfig[member.role].className} font-semibold border`}
                         >
                           {roleConfig[member.role].label}
                         </Badge>

@@ -100,7 +100,7 @@ export function InviteMemberDialog({ workspaceId, open, onOpenChange }: InviteMe
                 value={formData.role}
                 onValueChange={(value) => setFormData({ ...formData, role: value as Role })}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -136,6 +136,7 @@ export function InviteMemberDialog({ workspaceId, open, onOpenChange }: InviteMe
                   </SelectItem>
                 </SelectContent>
               </Select>
+              <p className="text-xs text-muted-foreground">Can create and edit own tasks</p>
             </div>
           </div>
 
