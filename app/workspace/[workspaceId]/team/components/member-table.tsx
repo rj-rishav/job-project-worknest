@@ -30,7 +30,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { RemoveMemberDialog } from "./remove-member-dialog"
 import { updateMemberRole } from "../actions"
-import { Role, type Membership, type User } from "@prisma/client"
+import { Role, type Membership, type User } from "@/lib/types"
 
 type MemberWithUser = Membership & {
   user: Pick<User, "id" | "name" | "email" | "image">

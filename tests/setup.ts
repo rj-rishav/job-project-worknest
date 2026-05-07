@@ -1,10 +1,8 @@
 import { beforeAll, afterAll, beforeEach } from "vitest"
 import { execSync } from "child_process"
 
-// Set test environment
-process.env.NODE_ENV = "test"
-process.env.DATABASE_URL =
-  process.env.DATABASE_URL || "postgresql://test:test@localhost:5432/worknest_test"
+// Set test environment - DATABASE_URL should be set via .env.test file
+// NODE_ENV is automatically set by Vitest to "test"
 
 beforeAll(async () => {
   // Push schema to test database

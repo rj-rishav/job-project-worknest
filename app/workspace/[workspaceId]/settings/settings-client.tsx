@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Role } from "@prisma/client"
+import { Role } from "@/lib/types"
 import { WorkspaceInfoForm } from "./components/workspace-info-form"
 import { DeleteWorkspaceDialog } from "./components/delete-workspace-dialog"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"

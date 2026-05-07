@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { ActivityAction, EntityType } from "@prisma/client"
+import { ActivityAction, EntityType } from "@/lib/types"
 
 interface ActivityFiltersProps {
   workspaceId: string

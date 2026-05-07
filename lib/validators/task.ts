@@ -6,7 +6,11 @@ export const createTaskSchema = z.object({
   description: z.string().max(5000, "Description must be less than 5000 characters").optional(),
   status: z.nativeEnum(TaskStatus).default(TaskStatus.TODO),
   priority: z.nativeEnum(TaskPriority).default(TaskPriority.MEDIUM),
-  dueDate: z.string().datetime().optional().nullable(),
+  dueDate: z
+    .union([z.string(), z.date()])
+    .transform((val) => (typeof val === "string" ? new Date(val) : val))
+    .optional()
+    .nullable(),
   assigneeId: z.string().optional().nullable(),
   workspaceId: z.string().min(1, "Workspace ID is required"),
 })
@@ -24,7 +28,11 @@ export const updateTaskSchema = z.object({
     .nullable(),
   status: z.nativeEnum(TaskStatus).optional(),
   priority: z.nativeEnum(TaskPriority).optional(),
-  dueDate: z.string().datetime().optional().nullable(),
+  dueDate: z
+    .union([z.string(), z.date()])
+    .transform((val) => (typeof val === "string" ? new Date(val) : val))
+    .optional()
+    .nullable(),
   assigneeId: z.string().optional().nullable(),
 })
 

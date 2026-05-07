@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { TaskStatus, TaskPriority } from "@prisma/client"
+import { TaskStatus, TaskPriority } from "@/lib/types"
 import { createTask } from "../actions"
 
 interface CreateTaskDialogProps {
@@ -126,7 +126,9 @@ export function CreateTaskDialog({
                 <Label htmlFor="status">Status</Label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: string) => setFormData({ ...formData, status: value })}
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, status: value as TaskStatus })
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -144,7 +146,9 @@ export function CreateTaskDialog({
                 <Label htmlFor="priority">Priority</Label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value: string) => setFormData({ ...formData, priority: value })}
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, priority: value as TaskPriority })
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue />

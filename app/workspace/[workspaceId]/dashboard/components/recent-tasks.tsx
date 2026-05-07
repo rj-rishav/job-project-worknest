@@ -5,11 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { StatusBadge } from "../../tasks/components/status-badge"
 import { PriorityBadge } from "../../tasks/components/priority-badge"
-import type { Task, User } from "@prisma/client"
-
-type TaskWithAssignee = Task & {
-  assignee: Pick<User, "id" | "name" | "email"> | null
-}
+import type { TaskWithAssignee } from "@/lib/types"
 
 interface RecentTasksProps {
   tasks: TaskWithAssignee[]

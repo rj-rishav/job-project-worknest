@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { TaskTable } from "./components/task-table"
 import { TaskFilters } from "./components/task-filters"
 import { CreateTaskDialog } from "./components/create-task-dialog"
-import type { Task } from "@prisma/client"
+import type { Task } from "@/lib/types"
 
 interface TasksClientProps {
   workspaceId: string

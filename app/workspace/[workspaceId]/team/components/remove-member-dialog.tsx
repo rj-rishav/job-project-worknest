@@ -13,11 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { removeMember } from "../actions"
-import type { Membership, User } from "@prisma/client"
-
-type MemberWithUser = Membership & {
-  user: Pick<User, "id" | "name" | "email" | "image">
-}
+import type { MemberWithUser } from "@/lib/types"
 
 interface RemoveMemberDialogProps {
   workspaceId: string

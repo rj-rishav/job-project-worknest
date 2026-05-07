@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { TaskStatus, TaskPriority, type Task } from "@prisma/client"
+import { TaskStatus, TaskPriority, type Task } from "@/lib/types"
 import { updateTask } from "../actions"
 
 interface EditTaskDialogProps {
@@ -107,7 +107,7 @@ function EditTaskForm({
             <Label>Status</Label>
             <Select
               value={formData.status}
-              onValueChange={(value: string) => setFormData({ ...formData, status: value })}
+              onValueChange={(value) => setFormData({ ...formData, status: value as TaskStatus })}
             >
               <SelectTrigger>
                 <SelectValue />
@@ -126,7 +126,9 @@ function EditTaskForm({
             <Label>Priority</Label>
             <Select
               value={formData.priority}
-              onValueChange={(value: string) => setFormData({ ...formData, priority: value })}
+              onValueChange={(value) =>
+                setFormData({ ...formData, priority: value as TaskPriority })
+              }
             >
               <SelectTrigger>
                 <SelectValue />

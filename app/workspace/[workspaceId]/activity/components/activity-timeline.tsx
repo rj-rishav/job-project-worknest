@@ -4,11 +4,7 @@ import { useRouter } from "next/navigation"
 import { format, formatDistanceToNow } from "date-fns"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import type { ActivityLog, User } from "@prisma/client"
-
-type ActivityWithUser = ActivityLog & {
-  user: Pick<User, "id" | "name" | "email" | "image">
-}
+import type { ActivityWithUser } from "@/lib/types"
 
 interface ActivityTimelineProps {
   workspaceId: string

@@ -23,7 +23,7 @@ import { StatusBadge } from "./status-badge"
 import { PriorityBadge } from "./priority-badge"
 import { EditTaskDialog } from "./edit-task-dialog"
 import { DeleteTaskDialog } from "./delete-task-dialog"
-import type { Task } from "@prisma/client"
+import type { Task } from "@/lib/types"
 
 interface TaskTableProps {
   workspaceId: string

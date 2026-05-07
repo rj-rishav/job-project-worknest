@@ -1,11 +1,7 @@
 import { formatDistanceToNow } from "date-fns"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import type { ActivityLog, User } from "@prisma/client"
-
-type ActivityWithUser = ActivityLog & {
-  user: Pick<User, "id" | "name" | "email">
-}
+import type { ActivityWithUser } from "@/lib/types"
 
 interface ActivityFeedProps {
   activities: ActivityWithUser[]

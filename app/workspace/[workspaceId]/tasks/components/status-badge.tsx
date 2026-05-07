@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge"
-import { TaskStatus } from "@prisma/client"
+import { TaskStatus } from "@/lib/types"
 
 const statusConfig = {
   [TaskStatus.TODO]: { label: "To Do", variant: "secondary" as const },

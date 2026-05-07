@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Role } from "@prisma/client"
+import { Role } from "@/lib/types"
 import { inviteMember } from "../actions"
 
 interface InviteMemberDialogProps {
@@ -98,7 +98,7 @@ export function InviteMemberDialog({ workspaceId, open, onOpenChange }: InviteMe
               <Label htmlFor="role">Role</Label>
               <Select
                 value={formData.role}
-                onValueChange={(value: string) => setFormData({ ...formData, role: value })}
+                onValueChange={(value) => setFormData({ ...formData, role: value as Role })}
               >
                 <SelectTrigger>
                   <SelectValue />

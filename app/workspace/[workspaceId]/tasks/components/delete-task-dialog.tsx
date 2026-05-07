@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { deleteTask } from "../actions"
-import type { Task } from "@prisma/client"
+import type { Task } from "@/lib/types"
 
 interface DeleteTaskDialogProps {
   workspaceId: string

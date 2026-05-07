@@ -6,11 +6,7 @@ import { Button } from "@/components/ui/button"
 import { MemberTable } from "./components/member-table"
 import { TeamFilters } from "./components/team-filters"
 import { InviteMemberDialog } from "./components/invite-member-dialog"
-import type { Membership, User } from "@prisma/client"
-
-type MemberWithUser = Membership & {
-  user: Pick<User, "id" | "name" | "email" | "image">
-}
+import type { MemberWithUser } from "@/lib/types"
 
 interface TeamClientProps {
   workspaceId: string

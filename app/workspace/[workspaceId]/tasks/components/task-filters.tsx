@@ -11,7 +11,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { TaskStatus, TaskPriority } from "@prisma/client"
+
+// Define enums locally to avoid importing Prisma in client components
+const TaskStatus = {
+  TODO: "TODO",
+  IN_PROGRESS: "IN_PROGRESS",
+  IN_REVIEW: "IN_REVIEW",
+  DONE: "DONE",
+  CANCELLED: "CANCELLED",
+} as const
+
+const TaskPriority = {
+  LOW: "LOW",
+  MEDIUM: "MEDIUM",
+  HIGH: "HIGH",
+  URGENT: "URGENT",
+} as const
 
 interface TaskFiltersProps {
   workspaceId: string

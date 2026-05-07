@@ -2,11 +2,7 @@
 
 import { ActivityFilters } from "./components/activity-filters"
 import { ActivityTimeline } from "./components/activity-timeline"
-import type { ActivityLog, User } from "@prisma/client"
-
-type ActivityWithUser = ActivityLog & {
-  user: Pick<User, "id" | "name" | "email" | "image">
-}
+import type { ActivityWithUser } from "@/lib/types"
 
 interface ActivityClientProps {
   workspaceId: string

@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge"
-import { TaskPriority } from "@prisma/client"
+import { TaskPriority } from "@/lib/types"
 
 const priorityConfig = {
   [TaskPriority.LOW]: { label: "Low", className: "bg-blue-100 text-blue-800 hover:bg-blue-100" },

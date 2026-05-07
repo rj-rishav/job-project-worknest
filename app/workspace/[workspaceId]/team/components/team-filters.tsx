@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Role } from "@prisma/client"
+import { Role } from "@/lib/types"
 
 interface TeamFiltersProps {
   workspaceId: string
